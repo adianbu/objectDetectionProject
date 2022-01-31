@@ -23,7 +23,7 @@ args = vars(ap.parse_args())
 CLASSES = ["background", "aeroplane", "bicycle", "bird", "boat",
 	"bottle", "bus", "car", "cat", "chair", "cow", "diningtable",
 	"dog", "horse", "motorbike", "person", "pottedplant", "sheep",
-	"sofa","mobile", "train", "tvmonitor"]
+	"sofa", "train", "tvmonitor"]
 COLORS = np.random.uniform(0, 255, size=(len(CLASSES), 3))
 
 # load our serialized model from disk
@@ -45,6 +45,8 @@ while True:
 	frame = imutils.resize(frame, width=400)
 
 	# grab the frame dimensions and convert it to a blob
+	# a Blob is a group of connected pixels which we can find in an image
+	#  and all of these pixels have some common property
 	(h, w) = frame.shape[:2]
 	blob = cv2.dnn.blobFromImage(cv2.resize(frame, (300, 300)),
 		0.007843, (300, 300), 127.5)
